@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button href='/'>Voltar</ion-button>
+    </ion-buttons>
+    <ion-title>tela02</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card-content>
+    Escreva o nome do animal da figura abaixo...
+  </ion-card-content>
+
+  <ion-slides>
+    <ion-slide>
+      <ion-card *ngIf="!ultima">
+        <img src="{{atividade.img}}">
+        <ion-item>
+          <ion-label position="stacked">Animal<ion-text color="danger">*</ion-text>
+          </ion-label>
+          <ion-input required type="text" [(ngModel)]="resposta"></ion-input>
+        </ion-item>
+
+        <div class="ion-padding">
+          <ion-button (click)="avaliar(atividade)">Ok</ion-button>
+        </div>
+
+      </ion-card>
+      
+      <div *ngIf="ultima">
+        <h1>Fim</h1>
+        <ion-button href="/">Inicio</ion-button>
+      </div>
+    </ion-slide>
+
+  </ion-slides>
+  <ion-item>
+      <ion-label>Pontos</ion-label>
+      <ion-badge color="light" slot="end">{{pontos}}</ion-badge>
+  </ion-item>
+
+</ion-content>

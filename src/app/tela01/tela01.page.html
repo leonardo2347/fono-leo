@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button href='/'>Voltar</ion-button>
+    </ion-buttons>
+    <ion-title>Tela01</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card-content>
+    Selecine a opção que representa o nome animal da figura abaixo.
+  </ion-card-content>
+  <ion-slides>
+    <ion-slide>
+      <ion-card *ngIf="!ultima">
+        <img src="{{atividade.img}}">
+        <ion-grid>
+          <ion-row>
+            <ion-col *ngFor="let opcao of atividade.opcoes">
+              <ion-button (click)="avaliar(opcao)">{{opcao.texto}}</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card>
+
+      <div *ngIf="ultima">
+        <h1>Fim</h1>
+        <ion-button href="/">Inicio</ion-button>
+      </div>
+    </ion-slide>
+    
+  </ion-slides>
+      <ion-item>
+          <ion-label>Pontos</ion-label>
+          <ion-badge color="light" slot="end">{{pontos}}</ion-badge>
+      </ion-item>
+
+
+</ion-content>

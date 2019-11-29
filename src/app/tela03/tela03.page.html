@@ -1,0 +1,26 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button href='/'>Voltar</ion-button>
+        </ion-buttons>
+        <ion-title>Tela03</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card-content>
+        Selecine a opçaõ que representa o figura abaixo.
+    </ion-card-content>
+    <ion-slides>
+        <ion-slide *ngFor="let registro of telas">
+            <ion-grid>
+                <img src="{{registro.img}}">
+                <ion-row>
+                    <ion-col>
+                        <ion-icon name="mic"></ion-icon>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-slide>
+    </ion-slides>
+</ion-content>
