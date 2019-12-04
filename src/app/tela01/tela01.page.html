@@ -1,27 +1,41 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-button href='/'>Voltar</ion-button>
-    </ion-buttons>
-    <ion-title>Tela01</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-  <ion-card-content>
-    Selecine a opção que representa o nome animal da figura abaixo.
-  </ion-card-content>
+  <ion-item>
+    <ion-label>Pontos</ion-label>
+    <ion-badge color="light" slot="end">{{pontos}}</ion-badge>
+  </ion-item>
+  
   <ion-slides>
     <ion-slide>
       <ion-card *ngIf="!ultima">
-        <img src="{{atividade.img}}">
-        <ion-grid>
-          <ion-row>
-            <ion-col *ngFor="let opcao of atividade.opcoes">
-              <ion-button (click)="avaliar(opcao)">{{opcao.texto}}</ion-button>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
+        <div *ngIf="atividade.nivel == 1">
+          <img src="{{atividade.img}}">
+          <ion-card-header>
+            Selecione a opção que representa o nome do animal da figura acima.
+          </ion-card-header>
+          <ion-grid>
+            <ion-row>
+              <ion-col *ngFor="let opcao of atividade.opcoes">
+                <ion-button (click)="avaliar1(opcao)">{{opcao.texto}}</ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+
+        <div *ngIf="atividade.nivel == 2">
+          <img src="{{atividade.img}}">
+          <ion-card-header>
+            Escreva o nome do animal representado por meio da figura acima.
+          </ion-card-header>
+          <ion-item>
+            <ion-label position="stacked">Animal<ion-text color="danger">*</ion-text>
+            </ion-label>
+            <ion-input required type="text" [(ngModel)]="resposta"></ion-input>
+          </ion-item>
+
+          <div class="ion-padding">
+            <ion-button (click)="avaliar2(atividade)">Ok</ion-button>
+          </div>
+        </div>
       </ion-card>
 
       <div *ngIf="ultima">
@@ -29,12 +43,7 @@
         <ion-button href="/">Inicio</ion-button>
       </div>
     </ion-slide>
-    
-  </ion-slides>
-      <ion-item>
-          <ion-label>Pontos</ion-label>
-          <ion-badge color="light" slot="end">{{pontos}}</ion-badge>
-      </ion-item>
 
+  </ion-slides>
 
 </ion-content>
